@@ -1,26 +1,23 @@
 import nodemailer from "nodemailer";
 
 const sendMail = async (options) => {
-  // Create a transporter using SMTP configuration
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST, // SMTP server host
-    port: process.env.SMTP_PORT, // SMTP server port
-    service: "gmail",
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: false,
     auth: {
-      user: process.env.SMTP_MAIL, // SMTP authentication email
-      pass: process.env.SMTP_PASSWORD, // SMTP authentication password
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
     },
   });
 
-  // Define email options
   const mailOptions = {
-    from: process.env.SMTP_MAIL, // Sender's email
-    to: options.email, // Recipient's email
-    subject: options.subject, // Email subject
-    html: options.message, // Email body in plain text
+    from: `"Aapki-Apni-Dukan" <${process.env.SMTP_USER}>`,
+    to: options.email,
+    subject: options.subject,
+    html: options.message,
   };
 
-  // Send the email
   await transporter.sendMail(mailOptions);
 };
 
