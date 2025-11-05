@@ -17,6 +17,14 @@ app.use(
   })
 );
 
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173", //", // Allow requests from this origin
+//     credentials: true, // Allow cookies and authorization headers
+//     methods: ["POST", "GET", "DELETE", "PUT"], // Allowed HTTP methods
+//   })
+// );
+
 // Middleware to parse incoming JSON data
 app.use(express.json());
 
