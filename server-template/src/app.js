@@ -41,7 +41,9 @@ app.use(cookieParser());
 app.get("/test", (req, res) => {
   res.send("<h1>Welcome to root path!</h1>");
 });
-
+app.get("/keep-alive", (req, res) => {
+  res.status(200).send("ok");
+});
 /**
  * @desc Middleware to parse URL-encoded bodies
  * @config Extended: true allows for rich objects and arrays
